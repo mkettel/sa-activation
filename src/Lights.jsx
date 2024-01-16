@@ -15,14 +15,15 @@ export default function Lights()
     return <>
 
         <group ref={lightRef}>
-          <directionalLight castShadow position={[-6.0, 1.0, 1.8]} intensity={3} shadow-mapSize={1024}>
+          <directionalLight castShadow position={[-3.0, 1.0, 1.8]} intensity={3} shadow-mapSize={1024}>
             <orthographicCamera attach="shadow-camera" args={[-10, 10, -10, 10, 0.1, 50]} />
           </directionalLight>
-        <rectAreaLight intensity={ 6 } position={ [ -8, 1, 0 ] } width={ 3 } height={ 6 } rotation={[0, -Math.PI / 2, 0]} />
+          <rectAreaLight color={"white"} intensity={ 2 } position={ [ -9, 1, 6 ] } width={ 3 } height={ 6 } rotation={[0, -Math.PI / 2.5, 0]} />
+          <rectAreaLight intensity={ 1 } position={ [ 9, 1, 3 ] } width={ 3 } height={ 6 } rotation={[0, Math.PI / 2.5, 0]} />
         </group>
 
 
         {/* Ambient light can help control the darkness of the shadow */}
-        <ambientLight intensity={ 0.2 } />
+        <ambientLight intensity={ 0.1 } />
     </>
 }

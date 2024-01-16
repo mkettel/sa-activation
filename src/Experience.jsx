@@ -22,7 +22,7 @@ export default function Experience()
 
         <Lights />
         <Center position={[0, 1, 0]} >
-          <group scale={1.3} >
+          <group scale={1.2} >
             <Text3D
               font="./Fontana_Bold.json"
               size={ 1 }
@@ -37,7 +37,7 @@ export default function Experience()
               castShadow
               >
               social
-              <meshStandardMaterial color="#404040" roughness={0.5} castShadow />
+              <meshStandardMaterial color="#404040" flatShading roughness={2} castShadow />
             </Text3D>
             <Text3D
               font="./Fontana_Bold.json"
@@ -54,15 +54,15 @@ export default function Experience()
               position={[3.05, 0, 0]}
               >
               amp
-              <meshStandardMaterial color="#f41717" roughness={1.5} castShadow />
+              <meshStandardMaterial color="#f41717" roughness={1.5} flatShading castShadow />
             </Text3D>
           </group>
         </Center>
 
-        <mesh rotation={[0, 0, 0]} position={[0, 0, -0.15]} receiveShadow>
+        <mesh rotation={[0, 0, 0]} position={[0, 0, -0.2]} receiveShadow>
           <planeGeometry args={[100, 100]} />
           {/* <shadowMaterial  opacity={0.5} color={"black"} /> */}
-          <meshStandardMaterial color="#e3f6ff" receiveShadow />
+          <meshStandardMaterial color="#F4F5F6" receiveShadow />
         </mesh>
 
     </>
