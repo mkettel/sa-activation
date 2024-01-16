@@ -7,7 +7,7 @@ export default function Experience()
     return <>
 
         {/* <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2.1} maxPolarAngle={Math.PI / 2.1} /> */}
-        <OrbitControls makeDefault />
+        {/* <OrbitControls makeDefault /> */}
         <SoftShadows
           size={11}
           focus={1}
