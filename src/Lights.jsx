@@ -20,13 +20,9 @@ export default function Lights()
           <directionalLight castShadow position={[ -8, 0.5, 2 ]} intensity={5} shadow-mapSize={1024}>
             <orthographicCamera attach="shadow-camera" args={[-10, 10, -10, 10, 0.1, 50]} />
           </directionalLight>
-          {/* <pointLight intensity={ 6 } position={[-0.1, -0.1, 8]} /> */}
+          <pointLight  position={[-3.6, 0.7, 7 ]} power={100} decay={1.5} />
           <rectAreaLight color={"white"} intensity={ 3 } position={ [ -9, 0.5, 2 ] } width={ 3 } height={ 6 } rotation={[0, -Math.PI / 2.5, 0]} />
           <rectAreaLight intensity={ 6 } position={ [ 10, 0.5, 2 ] } width={ 3 } height={ 6 } rotation={[0, Math.PI / 2.5, 0]} />
         </group>
-
-
-        {/* Ambient light can help control the darkness of the shadow */}
-        {/* <ambientLight intensity={ 0.1 } /> */}
     </>
 }
