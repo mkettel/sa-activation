@@ -31,6 +31,20 @@ export const NavMenu = () => {
           <a href="#contact">Why it matters</a>
         </div>
       </div>
+      <VideoElement />
     </>
   );
 };
+
+export const VideoElement = () => {
+
+  return (
+    <>
+      <div className="video-container">
+        <div className="video-container__card">
+
+        </div>
+      </div>
+    </>
+  )
+}

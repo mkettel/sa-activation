@@ -7,7 +7,7 @@ export default function Experience()
     return <>
 
         {/* <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2.1} maxPolarAngle={Math.PI / 2.1} /> */}
-        {/* <OrbitControls makeDefault /> */}
+        <OrbitControls makeDefault />
         <SoftShadows
           size={11}
           focus={1}
@@ -21,7 +21,7 @@ export default function Experience()
 
         <Lights />
         <Center position={[0, 0.8, 0]} >
-          <group scale={5.5} rotation={[Math.PI / 2, 0, 0]}>
+          <group scale={5.7} rotation={[Math.PI / 2, 0, 0]}>
             <Logo />
           </group>
         </Center>

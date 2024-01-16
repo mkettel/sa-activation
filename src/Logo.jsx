@@ -9,6 +9,22 @@ export default function Logo(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/3D_Card.glb");
   const { actions } = useAnimations(animations, group);
+
+  // increase metalness and decrease roughness
+  materials.SVGMat.metalness = 1
+  materials["SVGMat.001"].metalness = 1
+  materials["SVGMat.002"].metalness = 1
+  materials["SVGMat.001"].metalness = 0.5
+  materials["SVGMat.001"].roughness = 0.5
+  materials["SVGMat.001"].toneMapped = false
+  materials["SVGMat.002"].metalness = 0.5
+  materials["SVGMat.002"].roughness = 0.5
+  materials["SVGMat.002"].toneMapped = false
+  materials["SVGMat.003"].metalness = 0.5
+  materials["SVGMat.003"].roughness = 0.5
+  materials["SVGMat.003"].toneMapped = false
+
+  console.log(materials);
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
@@ -18,6 +34,7 @@ export default function Logo(props) {
           receiveShadow
           geometry={nodes.Curve.geometry}
           material={materials.SVGMat}
+          roughness={0.5}
           position={[0, 0.058, 0]}
           scale={4.225}
         />
@@ -27,6 +44,7 @@ export default function Logo(props) {
           receiveShadow
           geometry={nodes.Curve001.geometry}
           material={materials.SVGMat}
+          roughness={0.5}
           position={[0, 0.058, 0]}
           scale={4.225}
         />
@@ -36,6 +54,7 @@ export default function Logo(props) {
           receiveShadow
           geometry={nodes.Curve002.geometry}
           material={materials.SVGMat}
+          roughness={0.5}
           position={[0, 0.058, 0]}
           scale={4.225}
         />
