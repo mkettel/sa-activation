@@ -12,17 +12,9 @@ export default function Logo(props) {
 
   // increase metalness and decrease roughness
   materials.SVGMat.metalness = 1
-  materials["SVGMat.001"].metalness = 1
-  materials["SVGMat.002"].metalness = 1
-  materials["SVGMat.001"].metalness = 0.5
   materials["SVGMat.001"].roughness = 0.5
-  materials["SVGMat.001"].toneMapped = false
-  materials["SVGMat.002"].metalness = 0.5
   materials["SVGMat.002"].roughness = 0.5
-  materials["SVGMat.002"].toneMapped = false
-  materials["SVGMat.003"].metalness = 0.5
   materials["SVGMat.003"].roughness = 0.5
-  materials["SVGMat.003"].toneMapped = false
 
   console.log(materials);
   return (
