@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FramerMagnetic from '../components/FramerMagnetic';
 
 export const NavMenu = () => {
   // State to track the active menu item
@@ -15,8 +16,10 @@ export const NavMenu = () => {
         <div
           className={`nav-menu__item ${activeItem === 'about' ? 'active' : ''}`}
           onClick={() => handleItemClick('about')}
-        >
+          >
+          <FramerMagnetic>
           <a href="#about">What is Social Amp</a>
+        </FramerMagnetic>
         </div>
         <div
           className={`nav-menu__item ${activeItem === 'projects' ? 'active' : ''}`}
@@ -30,6 +33,7 @@ export const NavMenu = () => {
         >
           <a href="#contact">Why it matters</a>
         </div>
+
       </div>
       <VideoElement />
     </>
