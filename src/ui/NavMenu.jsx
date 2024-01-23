@@ -18,20 +18,24 @@ export const NavMenu = () => {
           onClick={() => handleItemClick('about')}
           >
           <FramerMagnetic>
-          <a href="#about">What is Social Amp</a>
-        </FramerMagnetic>
+            <a href="#about">What is Social Amp</a>
+          </FramerMagnetic>
         </div>
         <div
           className={`nav-menu__item ${activeItem === 'projects' ? 'active' : ''}`}
           onClick={() => handleItemClick('projects')}
         >
-          <a href="#projects">How it works</a>
+          <FramerMagnetic>
+            <a href="#projects">How it works</a>
+          </FramerMagnetic>
         </div>
         <div
           className={`nav-menu__item ${activeItem === 'contact' ? 'active' : ''}`}
           onClick={() => handleItemClick('contact')}
         >
-          <a href="#contact">Why it matters</a>
+          <FramerMagnetic>
+            <a href="#contact">Why it matters</a>
+          </FramerMagnetic>
         </div>
 
       </div>
