@@ -11,7 +11,7 @@ export default function Logo(props) {
   const { actions } = useAnimations(animations, group);
 
   // increase metalness and decrease roughness
-  materials.SVGMat.metalness = 1
+  materials.SVGMat.metalness = 0.5
   materials["SVGMat.001"].roughness = 0.5
   materials["SVGMat.002"].roughness = 0.5
   materials["SVGMat.003"].roughness = 0.5

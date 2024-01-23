@@ -1,4 +1,4 @@
-import { OrbitControls, Text3D, Center, SoftShadows } from '@react-three/drei'
+import { OrbitControls, Text3D, Center, SoftShadows, Environment } from '@react-three/drei'
 import Lights from './Lights.jsx'
 import Logo from './Logo.jsx'
 
@@ -10,12 +10,12 @@ export default function Experience()
         {/* <OrbitControls makeDefault /> */}
         <SoftShadows
           size={8}
-          focus={5}
+          focus={9}
           // near={0.1}
           // far={100}
           // resolution={1024}
           // bias={-0.0001}
-          samples={15}
+          samples={20}
           opacity={0.9}
           toneMapped={false}
         />
@@ -26,6 +26,8 @@ export default function Experience()
             <Logo />
           </group>
         </Center>
+
+        <Environment preset="city"   />
 
         {/* Wall behind the Logo */}
         <mesh rotation={[0, 0, 0]} position={[0, 0, 0.05]} receiveShadow>
