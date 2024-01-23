@@ -15,8 +15,8 @@ export default function Lights()
 
     useFrame((state, delta) => {
         // Clamp the mouse position to the maximum range
-        const clampedX = clamp(state.pointer.x * 0.3, -maxRangeX, maxRangeX);
-        const clampedY = clamp(state.pointer.y * 1.7, -maxRangeY, maxRangeY);
+        const clampedX = clamp(state.pointer.x * -0.3, -maxRangeX, maxRangeX);
+        const clampedY = clamp(state.pointer.y * -1.2, -maxRangeY, maxRangeY);
 
         // Use the clamped values for the light position
         easing.dampE(lightRef.current.position, [clampedX, clampedY, 0], 0.5, delta);
