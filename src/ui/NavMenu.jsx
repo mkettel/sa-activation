@@ -6,14 +6,17 @@ export const NavMenu = () => {
   const [activeItem, setActiveItem] = useState(null);
 
   // Ref for the SVG path element
-  const path = useRef(null);
-  const parentDiv = useRef(null);
+  const path = useRef(null); // reference to the path element
+  const parentDiv = useRef(null); // reference to the parent div
 
-  let progress = 0;
-  let reqId = null;
+  let progress = 0; // progress of the animation
+  let reqId = null; // id of the requestAnimationFrame
   let time = Math.PI / 2;
-  let x = 0.2;
+  let x = 0.2; // x position of the control point which sets the curvature of the path
 
+  /**
+   * Set the path of the SVG element to the initial value
+   */
   useEffect(() => {
     setPath(progress)
     window.addEventListener('resize', () => {
@@ -21,6 +24,14 @@ export const NavMenu = () => {
     })
   }, [])
 
+  /**
+   * Function to set the path of the SVG element
+   * parent div width is used to set the width of the SVG path
+   * value is the value of the progress
+   * setAttributeNS is used to set the path of the SVG element
+   * M sets the x and y coordinates of the starting point of the path
+   * Q sets the x and y coordinates of the control point and the x and y coordinates of the end point
+  */
   const setPath = (value) => {
     if (parentDiv.current) {
       const divWidth = parentDiv.current.offsetWidth; // Get the width of the parent div
@@ -28,6 +39,10 @@ export const NavMenu = () => {
     }
   };
 
+  /**
+   * if the animation is running cancel it and reset the time
+   * Calls setPath function with progress value that is updated by mouse movement
+   */
   const animateIn = () => {
     // if animation running cancel it
     if (reqId) {
@@ -38,6 +53,12 @@ export const NavMenu = () => {
     reqId = requestAnimationFrame(animateIn);
   }
 
+  /**
+   * Mouse Move gets the movement of the mouse in the y direction
+   * box is the bounding rectangle of the parent div
+   * x is the x position of the mouse in the parent div relative to the width of the parent div
+   * progress is the progress of the animation which is updated by the movement of the mouse
+   */
   const manageMouseMove = (e) => {
     const { movementY } = e;
     const box = e.target.getBoundingClientRect();
@@ -52,8 +73,11 @@ export const NavMenu = () => {
 
   const lerp = (x, y, a) => x * (1 - a) + y * a;
 
+  /**
+   * This function is called when the mouse leaves the parent div which is the bounding rectangle of the menu items
+   */
   const animateOut = () => {
-    let newProgress = progress * Math.sin(time);
+    let newProgress = progress * Math.sin(time); // new progress is used to set the path
     setPath(newProgress);
 
     progress = lerp(progress, 0, 0.04);

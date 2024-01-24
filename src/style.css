@@ -71,7 +71,7 @@ body,
 
 .line svg path{
   stroke-width: 1px;
-  stroke: white;
+  stroke: black;
   fill: none;
   width: 100%;
 }
