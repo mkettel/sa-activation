@@ -18,11 +18,18 @@ export const NavMenu = () => {
    * Set the path of the SVG element to the initial value
    */
   useEffect(() => {
-    setPath(progress)
-    window.addEventListener('resize', () => {
-      setPath(progress)
-    })
-  }, [])
+    const handleResize = () => {
+      setPath(progress);
+    };
+    // Set the path initially
+    setPath(progress);
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+    // Cleanup function
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   /**
    * Function to set the path of the SVG element
