@@ -20,7 +20,7 @@ export default function FramerMagnetic({children}) {
       // Get the position of the cursor relative to the element in the Y axis
       const middleY = clientY - (top + height/2)
 
-      setPosition({x: (middleX * 0.5), y: middleY})
+      setPosition({x: (middleX * 0.1), y: middleY})
   }
 
   const mouseLeave = () => {

@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { easing } from "maath"
 import { clamp } from 'three/src/math/MathUtils'; // Import the clamp function from Three.js
@@ -9,17 +9,50 @@ export default function Lights()
 
     const lightRef = useRef()
 
+    const [deviceOrientation, setDeviceOrientation] = useState({ alpha: 0, beta: 0, gamma: 0 });
+
+    useEffect(() => {
+      const handleOrientation = (event) => {
+        const { alpha, beta, gamma } = event;
+        setDeviceOrientation({ alpha, beta, gamma });
+      }
+
+      window.addEventListener('deviceorientation', handleOrientation)
+
+      return () => {
+        window.removeEventListener('deviceorientation', handleOrientation)
+      }
+    }, [])
+
     // Define the maximum range for the light movement
     const maxRangeX = 2; // Max distance in the X direction
     const maxRangeY = 2; // Max distance in the Y direction
 
     useFrame((state, delta) => {
-        // Clamp the mouse position to the maximum range
-        const clampedX = clamp(state.pointer.x * -0.3, -maxRangeX, maxRangeX);
-        const clampedY = clamp(state.pointer.y * -1.2, -maxRangeY, maxRangeY);
 
-        // Use the clamped values for the light position
-        easing.dampE(lightRef.current.position, [clampedX, clampedY, 0], 0.5, delta);
+        // only use if on mobile
+        if (window.innerWidth < 600) {
+          const factorX = deviceOrientation.gamma / 90; // rotation around the y-axis (in degrees), [-90,90]
+          const factorY = deviceOrientation.beta / 180; // rotation around the x-axis (in degrees), [-180,180]
+
+           // Calculate new position based on device orientation
+          const newX = clamp(factorX * maxRangeX, -maxRangeX, maxRangeX);
+          const newY = clamp(factorY * maxRangeY, -maxRangeY, maxRangeY);
+
+           // Update light position
+          // lightRef.current.position.x = newX;
+          // lightRef.current.position.y = newY;
+          // Use the clamped values for the light position
+          easing.dampE(lightRef.current.position, [newX, newY, 0], 0.5, delta);
+        } else {
+
+          // Clamp the mouse position to the maximum range
+          const clampedX = clamp(state.pointer.x * -0.3, -maxRangeX, maxRangeX);
+          const clampedY = clamp(state.pointer.y * -1.2, -maxRangeY, maxRangeY);
+
+          // Use the clamped values for the light position
+          easing.dampE(lightRef.current.position, [clampedX, clampedY, 0], 0.5, delta);
+        }
     });
 
     return <>
