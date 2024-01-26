@@ -22,6 +22,7 @@ export default function Experience()
     }
 
     window.addEventListener('resize', handleResize)
+    // initial test to see screen size
     handleResize();
     return () => {
       window.removeEventListener('resize', handleResize)
