@@ -15,6 +15,7 @@ export default function Lights()
       const handleOrientation = (event) => {
         const { alpha, beta, gamma } = event;
         setDeviceOrientation({ alpha, beta, gamma });
+        console.log('alpha: ', alpha);
       }
 
       window.addEventListener('deviceorientation', handleOrientation)
@@ -40,10 +41,12 @@ export default function Lights()
           const newY = clamp(factorY * maxRangeY, -maxRangeY, maxRangeY);
 
            // Update light position
-          // lightRef.current.position.x = newX;
-          // lightRef.current.position.y = newY;
+           if (lightRef.current) {
+             lightRef.current.position.x = newX;
+             lightRef.current.position.y = newY;
+           }
           // Use the clamped values for the light position
-          easing.dampE(lightRef.current.position, [newX, newY, 0], 0.5, delta);
+          // easing.dampE(lightRef.current.position, [newX, newY, 0], 0.5, delta);
         } else {
 
           // Clamp the mouse position to the maximum range
